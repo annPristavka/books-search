@@ -4,14 +4,14 @@ import Card from '../Card'
 import './style.scss'
 
 
-const Books = () => {
+const Books = ({setDataBook, setShow}) => {
     const books = useSelector(state => state.books.books)
 
     return (
         <div className="books">
             <div className="books__container">
                 {
-                    books.map((item, index) => <Card key={index} dataItem={item}/>)
+                    books.map((item, index) => <Card key={index} dataItem={item} setDataBook={setDataBook} setShow={setShow}/>)
                 }
             </div>
         </div>

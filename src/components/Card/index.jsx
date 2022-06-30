@@ -1,10 +1,10 @@
 import React from 'react'
 import './style.scss'
 
-const Card = ({dataItem}) => {
+const Card = ({dataItem, setDataBook, setShow}) => {
     
     return (
-        <div className="card">
+        <div className="card" onClick={() => {setDataBook(dataItem); setShow(true)}}>
             <div className="card__container">
                 <div className="card__container__cover">
                     <img src={dataItem?.volumeInfo?.imageLinks?.thumbnail} alt=""/>
