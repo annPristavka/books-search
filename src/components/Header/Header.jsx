@@ -4,22 +4,23 @@ import './style.scss'
 
 
 const categories = [
-    {name: 'all', value: 'All'},
-    {name: 'art', value: 'Art'},
-    {name: 'biography', value: 'Biography'},
-    {name: 'computers', value: 'Computers'},
-    {name: 'history', value: 'History'},
-    {name: 'medical', value: 'Medical'},
-    {name: 'poetry', value: 'Poetry'},
+    { value: 'all', label: 'All' },
+    { value: 'art', label: 'Art' },
+    { value: 'biography', label: 'Biography' },
+    { value: 'computers', label: 'Computers' },
+    { value: 'history', label: 'History' },
+    { value: 'medical', label: 'Medical' },
+    { value: 'poetry', label: 'Poetry' }
 ];
 
 const sortingBy = [
-    {name: 'relevance', value: 'Relevance'},
-    {name: 'newest', value: 'Newest'},
+    { value: 'newest', label: 'Newest' },
+    { value: 'relevance', label: 'Relevance' },
+    
 ];
 
 
-const Header = ({setValue, getData, setShow}) => {
+const Header = ({setValue, getData, setShow, setOrder, setCategories}) => {
 
     const handleChange = (e) => {
         setValue(e.target.value)
@@ -34,6 +35,14 @@ const Header = ({setValue, getData, setShow}) => {
             setShow(false)
             getData()
         }
+    }
+
+    const onChangeSort = (e) => {
+        setOrder(e.target.value)
+    }
+
+    const onChangeCategories = (e) => {
+        setCategories(e.target.value)
     }
 
     return (
@@ -51,20 +60,20 @@ const Header = ({setValue, getData, setShow}) => {
                 <div className="header__container__sort">
                     <section className="sortItem">
                         <p>Categories</p>
-                        <select>
+                        <select onChange={(e) => onChangeCategories(e)}>
                             {
                                 categories.map((item, index) => (
-                                    <option key={index} name={item.name}>{item.value}</option>
+                                    <option key={index} value={item.value}>{item.label}</option>
                                 ))
                             }
                         </select>
                     </section>
                     <section className="sortItem">
                         <p>Sorting by</p>
-                        <select>
+                        <select onChange={(e) => onChangeSort(e)}>
                             {
                                 sortingBy.map((item, index) => (
-                                    <option key={index} name={item.name}>{item.value}</option>
+                                    <option key={index} value={item.value}>{item.label}</option>
                                 ))
                             }
                         </select>

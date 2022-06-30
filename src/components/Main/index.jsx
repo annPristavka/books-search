@@ -14,6 +14,8 @@ const Main = () => {
     const [dataBooks, setDataBook] = useState([])
     const [show, setShow] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [order, setOrder] = useState('newest')
+    const [categories, setCategories] = useState('all')
 
     const dispatch = useDispatch();
     const books = useSelector(state => state.books.books)
@@ -21,7 +23,7 @@ const Main = () => {
     const getData = () => {
         setLoading(true)
 
-        axios.get('https://www.googleapis.com/books/v1/volumes?q='+value+'&key=AIzaSyACAECI5Xk3HkHRkteZ1Bdiyj8WDHeIYFk&maxResults=30')
+        axios.get('https://www.googleapis.com/books/v1/volumes?q='+value+'&orderBy='+order+'&key=AIzaSyACAECI5Xk3HkHRkteZ1Bdiyj8WDHeIYFk&maxResults=30')
         .then(response => dispatch(getBooksAction(response.data.items)))
         .catch(err => console.log(err))
 
@@ -37,7 +39,7 @@ const Main = () => {
 
     return(
         <>
-            <Header setValue={setValue} getData={getData} setShow={setShow}/>
+            <Header setValue={setValue} getData={getData} setShow={setShow} setOrder={setOrder} setCategories={setCategories}/>
             {  books.length > 0 && <Found /> }
            
             { 
