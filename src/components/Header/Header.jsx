@@ -19,7 +19,22 @@ const sortingBy = [
 ];
 
 
-const Header = () => {
+const Header = ({setValue, getData}) => {
+
+    const handleChange = (e) => {
+        setValue(e.target.value)
+    }
+
+    const searchData = () => {
+        getData()
+    }
+
+    const onKeyPress = (e) => {
+        if(e.key === 'Enter'){
+            getData()
+        }
+    }
+
     return (
         <header className="header">
             <div className="header__container">
@@ -28,8 +43,8 @@ const Header = () => {
                 </div>
                 
                 <div className="header__container__input">
-                    <input type='text' placeholder="search..."/>
-                    <img src={img} alt="search"/>
+                    <input type='text' placeholder="search..." onChange={e => handleChange(e)} onKeyPress={e => onKeyPress(e)}/>
+                    <img src={img} alt="search" onClick={() => searchData()}/>
                 </div>
                 
                 <div className="header__container__sort">

@@ -1,0 +1,12 @@
+.books {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    
+   
+    &__container {
+        display: grid;
+        gap: 65px;
+        grid-template-columns: repeat(auto-fill, minmax(240px, 0.5fr)); 
+    }
+}

@@ -1,13 +1,16 @@
 import './App.scss';
-import Books from './components/Books/Books';
-import Header from './components/Header/Header';
+import Main from './components/Main';
+import store from './store/index'
+import {Provider} from 'react-redux'
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      <Books />
-    </div>
+    <Provider store={store}>
+      <div className="App">
+        <Main />
+      </div>
+    </Provider>
+    
   );
 }
 
