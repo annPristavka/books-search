@@ -19,7 +19,7 @@ const sortingBy = [
 ];
 
 
-const Header = ({setValue, getData}) => {
+const Header = ({setValue, getData, setShow}) => {
 
     const handleChange = (e) => {
         setValue(e.target.value)
@@ -31,6 +31,7 @@ const Header = ({setValue, getData}) => {
 
     const onKeyPress = (e) => {
         if(e.key === 'Enter'){
+            setShow(false)
             getData()
         }
     }

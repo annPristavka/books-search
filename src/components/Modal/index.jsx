@@ -3,11 +3,13 @@ import close from '../../images/close.png'
 import './style.scss'
 
 const Modal = ({setShow, dataBooks}) => {
-    console.log(dataBooks)
+
     return(
         <div className='overlay'>
             <div className="overlay__container">
+
                 <img src={close} className="close" alt="close" onClick={() => setShow(false)}/>
+                
                 <section className="overlay__container__img">
                     <img src= {dataBooks?.volumeInfo?.imageLinks?.thumbnail} alt=""/>
                 </section>
@@ -19,10 +21,9 @@ const Modal = ({setShow, dataBooks}) => {
                     <article>
                         <p>{dataBooks?.volumeInfo?.description}</p>
                     </article>
-                    <button className="readMore"><a target="_blank" href={dataBooks?.volumeInfo?.infoLink}>Buy a book</a></button>
+                    <button><a target="_blank" href={dataBooks?.volumeInfo?.infoLink}>Buy a book</a></button>
                 </section>
                 
-
             </div>
         </div>
     )

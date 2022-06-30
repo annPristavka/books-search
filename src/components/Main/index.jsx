@@ -5,6 +5,7 @@ import Header from '../Header/Header'
 import Found from '../Found'
 import Books from '../Books/Books'
 import Modal from '../Modal'
+import Loading from '../Loading'
 import axios from 'axios'
 
 const Main = () => {
@@ -15,26 +16,32 @@ const Main = () => {
     const [loading, setLoading] = useState(false)
 
     const dispatch = useDispatch();
+    const books = useSelector(state => state.books.books)
 
     const getData = () => {
         setLoading(true)
+
         axios.get('https://www.googleapis.com/books/v1/volumes?q='+value+'&key=AIzaSyACAECI5Xk3HkHRkteZ1Bdiyj8WDHeIYFk&maxResults=30')
         .then(response => dispatch(getBooksAction(response.data.items)))
         .catch(err => console.log(err))
+
         setLoading(false)
     }
 
     // useEffect(() => (
     //     getData()
     // ),[])
+
+    
     const booksInfo = show ? <Modal setShow={setShow} dataBooks={dataBooks}/> : <Books setDataBook={setDataBook} setShow={setShow}/>
 
     return(
         <>
-            <Header setValue={setValue} getData={getData}/>
-            <Found />
-            {
-                booksInfo
+            <Header setValue={setValue} getData={getData} setShow={setShow}/>
+            {  books.length > 0 && <Found /> }
+           
+            { 
+                loading ? <Loading /> : booksInfo
             }
         </>
     )
