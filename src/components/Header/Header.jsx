@@ -1,33 +1,14 @@
 import React from 'react'
 import img from '../../images/search.png'
+import {categories, sortingBy} from '../../mock'
 import './style.scss'
 
+const Header = (props) => {
 
-const categories = [
-    { value: 'all', label: 'All' },
-    { value: 'art', label: 'Art' },
-    { value: 'biography', label: 'Biography' },
-    { value: 'computers', label: 'Computers' },
-    { value: 'history', label: 'History' },
-    { value: 'medical', label: 'Medical' },
-    { value: 'poetry', label: 'Poetry' }
-];
-
-const sortingBy = [
-    { value: 'newest', label: 'Newest' },
-    { value: 'relevance', label: 'Relevance' },
-    
-];
-
-
-const Header = ({setValue, getData, setShow, setOrder, setCategories}) => {
+    const {setValue, getData, setShow, setOrder, setCategories} = props
 
     const handleChange = (e) => {
         setValue(e.target.value)
-    }
-
-    const searchData = () => {
-        getData()
     }
 
     const onKeyPress = (e) => {
@@ -54,10 +35,11 @@ const Header = ({setValue, getData, setShow, setOrder, setCategories}) => {
                 
                 <div className="header__container__input">
                     <input type='text' placeholder="search..." onChange={e => handleChange(e)} onKeyPress={e => onKeyPress(e)}/>
-                    <img src={img} alt="search" onClick={() => searchData()}/>
+                    <img src={img} alt="search" onClick={getData}/>
                 </div>
                 
                 <div className="header__container__sort">
+
                     <section className="sortItem">
                         <p>Categories</p>
                         <select onChange={(e) => onChangeCategories(e)}>
@@ -68,6 +50,7 @@ const Header = ({setValue, getData, setShow, setOrder, setCategories}) => {
                             }
                         </select>
                     </section>
+                    
                     <section className="sortItem">
                         <p>Sorting by</p>
                         <select onChange={(e) => onChangeSort(e)}>
@@ -78,6 +61,7 @@ const Header = ({setValue, getData, setShow, setOrder, setCategories}) => {
                             }
                         </select>
                     </section>
+
                 </div>
             </div>
         </header>

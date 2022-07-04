@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react'
 import {useDispatch, useSelector} from 'react-redux/es/exports'
 import { getBooksAction } from '../../reducer/bookReduce'
 import Header from '../Header/Header'
-import Found from '../Found'
 import Books from '../Books/Books'
 import Modal from '../Modal'
 import Loading from '../Loading'
@@ -40,7 +39,6 @@ const Main = () => {
     return(
         <>
             <Header setValue={setValue} getData={getData} setShow={setShow} setOrder={setOrder} setCategories={setCategories}/>
-            {  books.length > 0 && <Found /> }
            
             { 
                 loading ? <Loading /> : booksInfo

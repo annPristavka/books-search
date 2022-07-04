@@ -2,26 +2,35 @@ import React from 'react'
 import close from '../../images/close.png'
 import './style.scss'
 
-const Modal = ({setShow, dataBooks}) => {
+const Modal = (props) => {
+
+    const {setShow, dataBooks} = props
+
+    const {categories, title, authors, description, infoLink} = dataBooks?.volumeInfo
+    const {thumbnail} = dataBooks?.volumeInfo?.imageLinks
+
+    const onClickShow = () => {
+        setShow(false)
+    }
 
     return(
         <div className='overlay'>
             <div className="overlay__container">
 
-                <img src={close} className="close" alt="close" onClick={() => setShow(false)}/>
+                <img src={close} className="close" alt="close" onClick={onClickShow}/>
                 
                 <section className="overlay__container__img">
-                    <img src= {dataBooks?.volumeInfo?.imageLinks?.thumbnail} alt=""/>
+                    <img src= {thumbnail} alt=""/>
                 </section>
 
                 <section className="overlay__container__info">
-                    <p>{dataBooks?.volumeInfo?.categories}</p>
-                    <h3>{dataBooks?.volumeInfo?.title}</h3>
-                    <p className="underline">{dataBooks?.volumeInfo?.authors}</p>
+                    <p>{categories}</p>
+                    <h3>{title}</h3>
+                    <p className="underline">{authors}</p>
                     <article>
-                        <p>{dataBooks?.volumeInfo?.description}</p>
+                        <p>{description}</p>
                     </article>
-                    <button><a target="_blank" href={dataBooks?.volumeInfo?.infoLink}>Buy a book</a></button>
+                    <button><a target="_blank" href={infoLink}>Buy a book</a></button>
                 </section>
                 
             </div>
