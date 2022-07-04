@@ -1,7 +1,45 @@
 import React from 'react'
 import img from '../../images/search.png'
 import {categories, sortingBy} from '../../mock'
+import styled from 'styled-components'
 import './style.scss'
+
+const Input = styled.input`
+    height: 36px;
+    width: 100%;
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+    border: none;
+    outline: none;
+`
+
+const H1 = styled.h1`
+    font-size: 48px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 36px;
+    letter-spacing: 110%;
+    color: #fff;
+`
+
+const P = styled.p`
+    color: #fff;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+`
+
+const Select = styled.select`
+    height: 46px;
+    width: 230px;
+    font-size: 24px;
+`
+
+const Img = styled.img`
+    border: none;
+    overflow: hidden;
+    height: 100%;
+    cursor: pointer;
+`
 
 const Header = (props) => {
 
@@ -30,36 +68,36 @@ const Header = (props) => {
         <header className="header">
             <div className="header__container">
                 <div className="head-h1">
-                    <h1>Search for books</h1>
+                    <H1>Search for books</H1>
                 </div>
                 
                 <div className="header__container__input">
-                    <input type='text' placeholder="search..." onChange={e => handleChange(e)} onKeyPress={e => onKeyPress(e)}/>
-                    <img src={img} alt="search" onClick={getData}/>
+                    <Input type='text' placeholder="search..." onChange={e => handleChange(e)} onKeyPress={e => onKeyPress(e)}/>
+                    <Img src={img} alt="search" onClick={getData}/>
                 </div>
                 
                 <div className="header__container__sort">
 
                     <section className="sortItem">
-                        <p>Categories</p>
-                        <select onChange={(e) => onChangeCategories(e)}>
+                        <P>Categories</P>
+                        <Select onChange={(e) => onChangeCategories(e)}>
                             {
                                 categories.map((item, index) => (
                                     <option key={index} value={item.value}>{item.label}</option>
                                 ))
                             }
-                        </select>
+                        </Select>
                     </section>
                     
                     <section className="sortItem">
-                        <p>Sorting by</p>
-                        <select onChange={(e) => onChangeSort(e)}>
+                        <P>Sorting by</P>
+                        <Select onChange={(e) => onChangeSort(e)}>
                             {
                                 sortingBy.map((item, index) => (
                                     <option key={index} value={item.value}>{item.label}</option>
                                 ))
                             }
-                        </select>
+                        </Select>
                     </section>
 
                 </div>

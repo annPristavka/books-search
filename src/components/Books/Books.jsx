@@ -1,8 +1,13 @@
 import React from 'react'
 import {useSelector, useDispatch} from 'react-redux'
 import Card from '../Card'
-import style from 'styled-components'
+import styled from 'styled-components'
 import './style.scss'
+
+const P = styled.p`
+    font-size: 18px;
+    font-family: 'Gantari', sans-serif;
+`;
 
 
 const Books = ({setDataBook, setShow}) => {
@@ -13,7 +18,7 @@ const Books = ({setDataBook, setShow}) => {
 
             <div className="found">
                 <div className="found__container">
-                    {books.length > 0 && <p>Found : {books.length}</p>}
+                    {books.length > 0 && <P>Found : {books.length}</P>}
                 </div>
             </div>
 
