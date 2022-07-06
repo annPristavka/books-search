@@ -1,7 +1,8 @@
 import React from 'react'
 import img from '../../images/search.png'
-import {categories, sortingBy} from '../../mock'
+import { categories, sortingBy } from '../../mock'
 import styled from 'styled-components'
+import { Link, useNavigate } from 'react-router-dom'
 import './style.scss'
 
 const Input = styled.input`
@@ -43,7 +44,9 @@ const Img = styled.img`
 
 const Header = (props) => {
 
-    const {setValue, getData, setShow, setOrder, setCategories} = props
+    const {setValue, getData, setOrder, setCategories} = props
+
+    const navigate = useNavigate()
 
     const handleChange = (e) => {
         setValue(e.target.value)
@@ -51,7 +54,7 @@ const Header = (props) => {
 
     const onKeyPress = (e) => {
         if(e.key === 'Enter'){
-            setShow(false)
+            navigate(`/`)
             getData()
         }
     }
@@ -73,7 +76,7 @@ const Header = (props) => {
                 
                 <div className="header__container__input">
                     <Input type='text' placeholder="search..." onChange={e => handleChange(e)} onKeyPress={e => onKeyPress(e)}/>
-                    <Img src={img} alt="search" onClick={getData}/>
+                    <Link to='/'><Img src={img} alt="search" onClick={getData}/></Link>
                 </div>
                 
                 <div className="header__container__sort">

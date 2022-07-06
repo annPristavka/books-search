@@ -1,5 +1,5 @@
 import React from 'react'
-import {useSelector, useDispatch} from 'react-redux'
+import { useSelector } from 'react-redux'
 import Card from '../Card'
 import styled from 'styled-components'
 import './style.scss'
@@ -9,13 +9,11 @@ const P = styled.p`
     font-family: 'Gantari', sans-serif;
 `;
 
-
 const Books = ({setDataBook, setShow}) => {
     const books = useSelector(state => state.books.books)
 
     return (
         <div className="books">
-
             <div className="found">
                 <div className="found__container">
                     {books.length > 0 && <P>Found : {books.length}</P>}

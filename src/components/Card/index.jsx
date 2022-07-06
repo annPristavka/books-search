@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { useNavigate } from 'react-router-dom'
 import './style.scss'
 
 const P = styled.p `
@@ -19,20 +20,23 @@ const H3 = styled.p `
 `
 
 const Card = (props) => {
+    const {dataItem} = props
 
-    const {dataItem, setDataBook, setShow} = props
-
-    const onClickCard = () =>{
-        setDataBook(dataItem)
-        setShow(true)
+    const navigate = useNavigate();
+    
+    const onClickCard = () => {
+        navigate(`/books/${id}`)
     }
 
+    const test = dataItem?.volumeInfo?.industryIdentifiers
     const {categories, title, authors} = dataItem?.volumeInfo;
-    const {thumbnail} = dataItem?.volumeInfo?.imageLinks
-    
+    const thumbnail = dataItem?.volumeInfo?.imageLinks?.thumbnail
+    const id= test && test[0].identifier 
+
     return (
         <div className="card" onClick={onClickCard}>
             <div className="card__container">
+
                 <div className="card__container__cover">
                     <img src={thumbnail} alt=""/>
                 </div>
@@ -43,7 +47,6 @@ const Card = (props) => {
                 </section>
 
             </div>
-
         </div>
     )
 }
