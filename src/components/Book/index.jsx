@@ -14,12 +14,14 @@ const Img = styled.img`
     justify-self: center;
 `
 
+
 const P = styled.p`
     font-size: 20px;
     font-family: 'Gantari', sans-serif;
     line-height: 20px;
     color:rgb(163, 163, 163)
 `
+
 
 const H3 = styled.h3 `
     font-size: 36px;
@@ -28,6 +30,7 @@ const H3 = styled.h3 `
     line-height: 36px;
     color:rgb(0, 0, 0)
 `
+
 
 const Button = styled.button`
     margin-top: 25px;
@@ -88,9 +91,9 @@ const Book = (props) => {
                 </section>
 
                 <section className="overlay__container__info">
-                    {/* <P>{categories[0]}</P> */}
-                    {/* <H3>{title}</H3> */}
-                    {/* <P className="underline">{authors}</P> */}
+                    <P>{categories[0]}</P>
+                    <H3>{title}</H3>
+                    <P className="underline">{authors}</P>
                     <Article>
                         <P>{description}</P>
                     </Article>
