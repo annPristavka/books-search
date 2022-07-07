@@ -1,54 +1,36 @@
-import React from 'react'
-import styled from 'styled-components'
-import { useNavigate } from 'react-router-dom'
-import './style.scss'
-
-const P = styled.p `
-    font-size: 20px;
-    font-family: 'Gantari', sans-serif;
-    font-weight: 400;
-    color:rgba(153, 149, 149, 0.726);
-    line-height: 20px;
-`
-
-const H3 = styled.p `
-    font-size: 30px;
-    font-family: 'Gantari', sans-serif;
-    font-weight: 600;
-    color:rgba(0, 0, 0, 0.726);
-    line-height: 30px;
-`
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
+import { P, H3 } from './styled';
+import './style.scss';
 
 const Card = (props) => {
-    const {dataItem} = props
+  const { dataItem } = props;
 
-    const navigate = useNavigate();
-    
-    const onClickCard = () => {
-        navigate(`/books/${id}`)
-    }
+  const navigate = useNavigate();
 
-    const test = dataItem?.volumeInfo?.industryIdentifiers
-    const {categories, title, authors} = dataItem?.volumeInfo;
-    const thumbnail = dataItem?.volumeInfo?.imageLinks?.thumbnail
-    const id= test && test[0].identifier 
+  const onClickCard = () => {
+    navigate(`/books/${id}`);
+  };
 
-    return (
-        <div className="card" onClick={onClickCard}>
-            <div className="card__container">
+  const test = dataItem?.volumeInfo?.industryIdentifiers;
+  const { categories, title, authors } = dataItem?.volumeInfo;
+  const thumbnail = dataItem?.volumeInfo?.imageLinks?.thumbnail;
+  const id = test && test[0].identifier;
 
-                <div className="card__container__cover">
-                    <img src={thumbnail} alt=""/>
-                </div>
-                <section className="card__container__info">
-                    <P className="underline">{categories || 'no'}</P>
-                    <H3>{title}</H3>
-                    <P>{authors}</P>
-                </section>
-
-            </div>
+  return (
+    <div className='card' onClick={onClickCard}>
+      <div className='card__container'>
+        <div className='card__container__cover'>
+          <img src={thumbnail} alt='' />
         </div>
-    )
-}
+        <section className='card__container__info'>
+          <P className='underline'>{categories || 'no'}</P>
+          <H3>{title}</H3>
+          <P>{authors}</P>
+        </section>
+      </div>
+    </div>
+  );
+};
 
-export default Card
+export default Card;

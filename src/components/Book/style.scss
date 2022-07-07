@@ -1,34 +1,33 @@
 .overlay {
-    max-width: 1400px;
-    height: 700px;
-    margin: 0 auto;
+  max-width: 1400px;
+  height: 700px;
+  margin: 0 auto;
 
-    &__container {
-        position: relative;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        height: 100%;
-        .close {
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 42px;
-            height: 42px;
-            cursor: pointer;
-        }
-
-        &__img {
-            display: grid;
-            background-color: rgb(243, 243, 243);
-           
-        }
-
-        &__info {
-            padding: 50px;
-
-           .underline {
-                text-decoration: underline;
-           }
-        }
+  &__container {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    height: 100%;
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 42px;
+      height: 42px;
+      cursor: pointer;
     }
+
+    &__img {
+      display: grid;
+      background-color: rgb(243, 243, 243);
+    }
+
+    &__info {
+      padding: 50px;
+
+      .underline {
+        text-decoration: underline;
+      }
+    }
+  }
 }

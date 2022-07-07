@@ -1,36 +1,32 @@
 .card {
-    background-color: rgba(243, 242, 242, 0.726);
-    min-height: 400px;
-    cursor: pointer;
-    &__container {
-        &__cover {
-            display: grid;
-            
-            img {
-                margin: 15px 0;
-                width: 180px;
-                height: 240px;
-                align-self: center;
-                justify-self: center;
-            }
-        }
+  background-color: rgba(243, 242, 242, 0.726);
+  min-height: 400px;
+  cursor: pointer;
+  &__container {
+    &__cover {
+      display: grid;
 
-        &__info {
-            padding-left: 15px;
-            min-height: 100px;
-
-            .underline {
-                text-decoration: underline;
-            }
-
-        }
+      img {
+        margin: 15px 0;
+        width: 180px;
+        height: 240px;
+        align-self: center;
+        justify-self: center;
+      }
     }
 
-    
+    &__info {
+      padding-left: 15px;
+      min-height: 100px;
+
+      .underline {
+        text-decoration: underline;
+      }
+    }
+  }
 }
 
 .card:hover {
-    transform: scale(0.9);
-    background-color: rgba(255, 255, 255, 0.8);
+  transform: scale(0.9);
+  background-color: rgba(255, 255, 255, 0.8);
 }
-

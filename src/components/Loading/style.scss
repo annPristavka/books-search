@@ -1,14 +1,14 @@
 .spinner {
-    max-width: 1400px;
-    margin: 0 auto;
-    
-    &__container {
-        width: 100%;
-        margin-top: 150px;
-        display: grid;
-        .clipLoader {
-            align-self: center;
-            justify-self: center;
-        }
+  max-width: 1400px;
+  margin: 0 auto;
+
+  &__container {
+    width: 100%;
+    margin-top: 150px;
+    display: grid;
+    .clipLoader {
+      align-self: center;
+      justify-self: center;
     }
+  }
 }
